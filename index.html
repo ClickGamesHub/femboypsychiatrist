@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- ClickHub product; GAME:1; -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Психиатр Фембоя на Ляндии</title>
+</head>
+
+<body id='main'>
+
+    <div>
+
+        <h1>Психиатр Фембоя на Ляндии</h1>
+        <p style="color: #bababa;">Игра никак не связана с какими-либо личностями в интернете</p>
+        <input type="text" id="question">
+        <input type="button" value="Сказать" onclick="Ask()">
+        <p id="answer"></p>
+
+    </div>
+
+    <script>
+
+        let words = ['Cекс', 'Фембой', ' мой друг :3', 'крутой', 'любовь', 'да', 'любовь', 'Пейдей', 'фонк', 'люблю', 'if', 'else', '💕', '💋💋', '😍', '🥰', '🥵',
+            'Эпл', 'Медик', 'Попдеш', 'Гусь', 'Тратур', 'Месаг', 'uwu', '>w<', '0w0', '^w^', '~', '~~', 'убейся', 'фембой', 'фем', 'пж', '!!work', 'сверху гей', 
+            'глубоко', 'омежка', 'пассивный', 'ты', 'мррр', 'мрр', 'мррррр', 'мяу'
+        ]
+
+        const adds = [
+            '', '', '', '', '', '!', '.', '<', '<<<', ',', '~', '~~', ' :3', '(', ')'
+        ]
+
+        let question = "";
+        let lastQ;
+
+        Ask = () => {
+            question = element("question").value;
+
+            if (question != lastQ && question != "") {
+                let len = random(0, 25)
+                let ans = ''
+
+                words = words.concat(question.split(' '))
+
+                for (let i = 0; i < len; i++) {
+                    ans += words[random(0, words.length-1)] + adds[random(0, adds.length-1)] + ' '
+                }
+
+                update("answer", "Медик говорит: " + ans);
+            }
+
+            lastQ = question;
+        }
+
+    </script>
+
+
+    <script>
+        //Системные функции, НЕ ТРОГАТЬ!!!!!!
+
+        const element = (id) => {
+            return document.getElementById(id);
+        }
+
+        const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+        const main = element('main');
+
+        const print = (text, type = 'p') => {
+            const newPart = document.createElement(type);
+            newPart.innerHTML = `${text}`;
+            main.appendChild(newPart);
+
+        }
+        const color = (id, color) => {
+            e = element(id);
+            e.style.color = color;
+        }
+        const bgcolor = (id, color) => {
+            e = element(id);
+            e.style.background = color;
+        }
+        const update = (id, text) => {
+            e = element(id);
+            e.innerHTML = `${text}`;
+        }
+        const content = (id) => {
+            e = element(id);
+            return e.innerHTML;
+        }
+
+        const loop = (func, time) => {
+            return setInterval(func, time);
+        }
+
+    </script>
+
+    <style>
+        body {
+            background-color: #2a2a2a;
+            font-family: Verdana, sans-serif;
+        }
+
+
+        button {
+            border-style: none;
+            border-radius: 7px;
+            font-size: medium;
+            padding: 12px;
+            font-family: Verdana, sans-serif;
+            background-color: rgb(255, 255, 255);
+        }
+
+        p,
+        h2,
+        h1 {
+            color: white;
+        }
+
+        #credit {
+            font-size: small;
+        }
+
+        textarea {
+            font-family: Verdana, sans-serif;
+            padding-top: 10px;
+            outline: none;
+            resize: vertical;
+            overflow: auto;
+            border-radius: 7px;
+        }
+
+        input {
+            font-family: Verdana, sans-serif;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+            border-style: none;
+            border-radius: 7px;
+        }
+    </style>
+</body>
+
+</html>
